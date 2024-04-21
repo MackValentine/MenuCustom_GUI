@@ -38,14 +38,15 @@ namespace MenuCustom
             {
 
                 string contents = "@raw 9998, \"" + options.showMap;
-                if (options.background != "")
-                    contents += ",'" + options.background + "'";
-
+                if (options.background != "") { 
+                    contents += ", '" + options.background + "'";
+                    contents += "," + options.speedX + "," + options.speedY;
+                }
                 foreach (Window_Class window in windows)
                 {
                     contents += "\n";
-                    string b = window.getHide().ToString();
-                    contents += window.getName() + ":" + window.getX() + "," + window.getY() + "," + (window.getW() + 8) + "," + (window.getH() - 8) + "," + window.getColumn() + "," + b + "," + window.getOpacity();
+                    string hided = window.getHide().ToString();
+                    contents += window.getName() + ":" + window.getX() + "," + window.getY() + "," + (window.getW() + 8) + "," + (window.getH() - 8) + "," + window.getColumn() + "," + window.getOpacity() + "," + hided;
                     if (window.getCustom())
                         foreach (Page page in window.GetPageList())
                         {
@@ -113,6 +114,18 @@ namespace MenuCustom
                         tokens[1] = tokens[1].Substring(index_found, last_index_found - index_found);
                         options.background = tokens[1];
                     }
+                    if (tokens.Length > 2)
+                    {
+                        int sx = 0;
+                        int.TryParse(tokens[2], out sx);
+                        options.speedX = sx;
+                    }
+                    if  (tokens.Length > 3)
+                    {
+                        int sy = 0;
+                        int.TryParse(tokens[3], out sy);
+                        options.speedY = sy;
+                    }
                 }
                 else
                 {
@@ -142,6 +155,7 @@ namespace MenuCustom
                         // win = new Window_Class("Commands", false);
                         // parent.WindowCommand = win;
                         win = parent.WindowCommand;
+                        parent.windows.Add(win);
                         parent.GetListWindows().Nodes.Add(win.getName());
                     }
                     else if (win_name == "Gold")
@@ -149,6 +163,7 @@ namespace MenuCustom
                         // win = new Window_Class("Gold", false);
                         // parent.WindowGold = win;
                         win = parent.WindowGold;
+                        parent.windows.Add(win);
                         parent.GetListWindows().Nodes.Add(win.getName());
                     }
                     else if (win_name == "Status")
@@ -156,6 +171,7 @@ namespace MenuCustom
                         // win = new Window_Class("Status", false);
                         // parent.WindowStatus = win;
                         win = parent.WindowStatus;
+                        parent.windows.Add(win);
                         parent.GetListWindows().Nodes.Add(win.getName());
                     }
                     else

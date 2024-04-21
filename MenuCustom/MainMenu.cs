@@ -406,7 +406,7 @@ namespace MenuCustom
                         if (c.Name == "numericCondition" && selectedWindow.getCustom())
                         {
                             int i = tabControl.TabPages.IndexOf(t);
-                            if (i< selectedWindow.GetPageList().Count())
+                            if (i < selectedWindow.GetPageList().Count())
                                 c.Enabled = selectedWindow.GetPageList()[i].Condition;
                         }
                         else
@@ -535,7 +535,7 @@ namespace MenuCustom
         private void listWindows_AfterSelect(object sender, TreeViewEventArgs e)
         {
             String s = ((TreeNode)e.Node).Text;
-            
+
             selectedWindow = null;
             refreshMenu(null);
 
@@ -599,7 +599,8 @@ namespace MenuCustom
 
         private void buttonNew_Click(object sender, EventArgs e)
         {
-            if (maxWin == 0) { 
+            if (maxWin == 0)
+            {
                 foreach (Window_Class ww in windows)
                 {
                     if (ww.index > maxWin)
@@ -834,17 +835,29 @@ namespace MenuCustom
             this.Enabled = false;
             childForm.Show(this);
 
-            
+
         }
 
         public void refreshImport()
         {
             textBoxBackground.Text = options.background;
             checkMap.Checked = options.showMap;
+            numericSX.Value = options.speedX;
+            numericSY.Value = options.speedY;
 
             tabControl.SelectedIndex = 0;
 
             refresh();
+        }
+
+        private void numericSX_ValueChanged(object sender, EventArgs e)
+        {
+            options.speedX = (int)numericSX.Value;
+        }
+
+        private void numericSY_ValueChanged(object sender, EventArgs e)
+        {
+            options.speedY = (int)numericSY.Value;
         }
     }
 }

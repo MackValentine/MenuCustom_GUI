@@ -63,6 +63,10 @@
             label2 = new Label();
             buttonDelete = new Button();
             buttonImport = new Button();
+            numericSX = new NumericUpDown();
+            numericSY = new NumericUpDown();
+            labelSX = new Label();
+            labelSY = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericX).BeginInit();
@@ -75,6 +79,8 @@
             ((System.ComponentModel.ISupportInitialize)numericCondition).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericOpacity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericColumn).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericSX).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericSY).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -438,11 +444,49 @@
             buttonImport.UseVisualStyleBackColor = true;
             buttonImport.Click += buttonImport_Click;
             // 
+            // numericSX
+            // 
+            numericSX.Location = new Point(704, 120);
+            numericSX.Name = "numericSX";
+            numericSX.Size = new Size(120, 23);
+            numericSX.TabIndex = 25;
+            numericSX.ValueChanged += numericSX_ValueChanged;
+            // 
+            // numericSY
+            // 
+            numericSY.Location = new Point(835, 120);
+            numericSY.Name = "numericSY";
+            numericSY.Size = new Size(120, 23);
+            numericSY.TabIndex = 26;
+            numericSY.ValueChanged += numericSY_ValueChanged;
+            // 
+            // labelSX
+            // 
+            labelSX.AutoSize = true;
+            labelSX.Location = new Point(704, 102);
+            labelSX.Name = "labelSX";
+            labelSX.Size = new Size(55, 15);
+            labelSX.TabIndex = 27;
+            labelSX.Text = "Speed X :";
+            // 
+            // labelSY
+            // 
+            labelSY.AutoSize = true;
+            labelSY.Location = new Point(835, 102);
+            labelSY.Name = "labelSY";
+            labelSY.Size = new Size(55, 15);
+            labelSY.TabIndex = 28;
+            labelSY.Text = "Speed Y :";
+            // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(999, 496);
+            Controls.Add(labelSY);
+            Controls.Add(labelSX);
+            Controls.Add(numericSY);
+            Controls.Add(numericSX);
             Controls.Add(buttonImport);
             Controls.Add(buttonDelete);
             Controls.Add(label2);
@@ -473,6 +517,8 @@
             ((System.ComponentModel.ISupportInitialize)numericCondition).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericOpacity).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericColumn).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericSX).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericSY).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -514,5 +560,9 @@
         private Label label2;
         private Button buttonDelete;
         private Button buttonImport;
+        private NumericUpDown numericSX;
+        private NumericUpDown numericSY;
+        private Label labelSX;
+        private Label labelSY;
     }
 }

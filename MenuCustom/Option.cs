@@ -10,5 +10,8 @@ namespace MenuCustom
     {
         public bool showMap;
         public string background = "";
+
+        public int speedX;
+        public int speedY;
     }
 }
